@@ -73,7 +73,7 @@ def slicing_function(text:str):
     r = []
     for i in text.split("|"):
         for n in i.split(":"):
-            r.append(n.strip())
+            r.append(n.strip()) # https://www.freecodecamp.org/news/how-to-strip-trailing-whitespace-in-python/
     return dict(zip(r[::2], r[1::2]))
 
 text = "Nombre: Juan Pérez | Edad: 30 | Ciudad: Salta"
