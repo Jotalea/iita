@@ -54,3 +54,29 @@ def convertir_temperatura(temperatura:int, medida:str, objetivo:str):
         return float(truncate(( temperatura - 32 ) / 1.8, 2))
     else:
         return "inválido"
+
+# Actividad 3
+def es_palindromo(texto):
+    texto_array = []
+    for caracter in texto:
+        texto_array.append(caracter)
+    if texto_array == texto_array.reverse():
+        return True
+    return False
+    
+# actividad 4
+def info_texto(texto):
+    """
+    (para hacer)
+    """
+    palabras_total = 0
+    caracteres_total = 0
+    for palabra in texto.split():
+        palabras_total += 1
+    for caracter in texto:
+        caracteres_total += 1
+    return f"el texto contiene {palabras_total} palabras, y {caracteres_total} caracteres"
+    
+# actividad 5
+def generar_numero_primo(limite):
+    return limite # no me acuerdo la fórmula para generar números primos, y estoy en medio de un vuelo en avión
