@@ -139,3 +139,37 @@ def actualizar_inventario(inventario: dict, vendidos: list) -> dict:
     return inventario
 
 # actividad 7
+def separar_caracteres(lista_strings: list) -> list:
+    """
+    Convierte una lista de strings en una lista de listas de caracteres.
+    
+    Args:
+        lista_strings (list): lista que contiene uno o más strings
+        
+    Returns:
+        list: una lista que contiene una lista por cada string en lista_strings, que a su vez contiene el string caracter por caracter
+    """
+    return list(map(list, lista_strings))
+
+# actividad 8
+def estadisticas(numeros:list) -> dict:
+    """
+    calcula la media, mediana y moda de una lista de números.
+
+    estadísticas:
+    - media: el promedio aritmético.
+    - mediana: el valor central de la lista ordenada.
+    - moda: el valor que más se repite.
+    
+    Args:
+        numeros (list): una lista con números (int/float) a analizar
+    Returns:
+        dict: {"media": int, "mediana": int, "moda": int}
+    """
+    import statistics
+    
+    return {
+        "media": statistics.mean(numeros),
+        "mediana": statistics.median(numeros),
+        "moda": statistics.mode(numeros)
+    }
