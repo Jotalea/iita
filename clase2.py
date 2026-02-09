@@ -1,11 +1,19 @@
 # actividad 1
-def descuento(precio:float, porcentaje:int):
-    """esta función toma un precio y le aplica un descuento"""
-    return precio - ( precio * ( porcentaje / 100 ) )
+def descuento(precio:float, porcentaje:int) -> float:
+    """
+    Calcula el precio final de un producto aplicando un descuento.
+
+    Args:
+        precio (float): El precio original del producto.
+        porcentaje (int): El porcentaje de descuento a aplicar (0-100).
+
+    Returns:
+        float: El precio final tras aplicar el descuento.
+    """
+    return float(precio - (precio * (porcentaje / 100)))
 
 # actividad 2
-def convertir_temperatura(temperatura:int, medida:str, objetivo:str):
-    def convertir_temperatura(temperatura: int, medida: str, objetivo: str):
+def convertir_temperatura(temperatura:int, medida:str, objetivo:str) -> str:
     """
     Convierte un valor de temperatura entre Celsius y Fahrenheit.
 
@@ -49,14 +57,14 @@ def convertir_temperatura(temperatura:int, medida:str, objetivo:str):
 
     
     if medida.lower() in celsius and objetivo.lower() in fahrenheit:
-        return float(truncate(temperatura * 1.8 + 32, 2))
+        return str(float(truncate(temperatura * 1.8 + 32, 2)))
     elif medida.lower() in fahrenheit and objetivo.lower() in celsius:
-        return float(truncate(( temperatura - 32 ) / 1.8, 2))
+        return str(float(truncate(( temperatura - 32 ) / 1.8, 2)))
     else:
         return "inválido"
 
 # Actividad 3
-def es_palindromo(texto):
+def es_palindromo(texto:str) -> bool:
     texto_array = []
     for caracter in texto:
         texto_array.append(caracter)
@@ -65,9 +73,16 @@ def es_palindromo(texto):
     return False
     
 # actividad 4
-def info_texto(texto):
+def info_texto(texto:str) -> str:
     """
-    (para hacer)
+    Cuenta la cantidad de palabras y caracteres en un texto.
+
+    Args:
+        texto (str): La cadena de texto a analizar.
+
+    Returns:
+        dict: Un diccionario con el siguiente formato:
+              {'palabras': int, 'caracteres': int}
     """
     palabras_total = 0
     caracteres_total = 0
@@ -76,7 +91,51 @@ def info_texto(texto):
     for caracter in texto:
         caracteres_total += 1
     return f"el texto contiene {palabras_total} palabras, y {caracteres_total} caracteres"
-    
+
 # actividad 5
-def generar_numero_primo(limite):
-    return limite # no me acuerdo la fórmula para generar números primos, y estoy en medio de un vuelo en avión
+def generar_primos(limite: int) -> list:
+    """
+    Genera una lista de números primos hasta un número dado.
+
+    Un número primo es un número natural mayor que 1 que tiene 
+    únicamente dos divisores distintos: él mismo y el 1.
+
+    Args:
+        limite (int): El número entero positivo hasta donde buscar.
+
+    Returns:
+        list: Lista de enteros primos encontrados.
+    """
+    numeros_primos = []
+    for numero in range(2, limite + 1):
+        es_primo = True
+        for i in range(2, int(numero**0.5) + 1):
+            if num % i == 0:
+                es_primo = False
+                break
+        if es_primo:
+            numeros_primos.append(numero)
+    return numeros_primos
+    
+# actividad 6
+def actualizar_inventario(inventario: dict, vendidos: list) -> dict:
+    """
+    Actualiza las cantidades del inventario restando los productos vendidos.
+
+    Args:
+        inventario (dict): Diccionario {producto: cantidad}.
+        vendidos (list): Lista de nombres de productos vendidos.
+
+    Returns:
+        dict: El inventario actualizado.
+
+    Example:
+        >>> actualizar_inventario({"manzanas": 10}, ["manzanas", "manzanas"])
+        {"manzanas": 8}
+    """
+    for producto in vendidos:
+        if producto in inventario:
+            inventario[producto] -= 1
+    return inventario
+
+# actividad 7
